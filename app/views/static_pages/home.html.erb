@@ -1,0 +1,15 @@
+<% if signed_in? %>
+    <%= link_to 'log uit', signout_path, method: 'delete' %>
+<% end %>
+
+<% if !signed_in? %>
+    <%= render 'sessions/new' %>
+    <a href='https://runkeeper.com/apps/authorize?client_id=e0d64f73d35d459ead977b329e7445da&redirect_uri=http%3A%2F%2Flocalhost:3000/runkeeper/authorize%2F&response_type=code&state='><img src='http://static1.runkeeper.com/images/assets/connect-blue-white-200x38.png'/></a>
+    <%= runkeeper %>
+<% end %>
+
+<% if signed_in? %>
+    <%= render 'messages/new' %>
+<% end %>
+
+<%= render 'messages/index' %>

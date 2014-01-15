@@ -1,0 +1,21 @@
+<% if !@all_messages.nil? %>
+    <% @all_messages.each do |bericht| %>
+        <div style="float: left; clear: both; width: 200px;">
+          <%= User.find_by(id: bericht.user_id).email %>
+        </div>
+        <div style="float: left; width: 400px">
+          <% if !bericht.message.nil? && !bericht.picture.nil? %>
+              <div>
+                <%= bericht.message %>
+              </div>
+              <div>
+                <%= image_tag(asset_path "#{bericht.user_id}/#{bericht.picture}", style: "max-width: 400px") %>
+              </div>
+          <% elsif !bericht.message.nil? %>
+              <%= bericht.message %>
+          <% elsif !bericht.picture.nil? %>
+              <%= image_tag(asset_path "#{bericht.user_id}/#{bericht.picture}", style: "max-width: 400px") %>
+          <% end %>
+        </div>
+    <% end %>
+<% end %>

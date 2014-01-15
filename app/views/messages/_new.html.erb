@@ -1,0 +1,11 @@
+<%= form_for @messages do |f| %>
+    <div>
+      <div>
+        <%= f.text_area :message, {cols: '40', rows: '5', placeholder: 'Schrijf iets over jou laatste loopronde!'} %>
+      </div>
+      <div>
+        <%= f.file_field :picture, accept: 'image/png,image/gif,image/jpeg' %>
+        <%= f.submit 'plaats bericht' %>
+      </div>
+    </div>
+<% end %>
